@@ -1,0 +1,281 @@
+.attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    *, *::after, *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      :root {
+        /* colors */
+        --neutral-1: hsl(226, 43%, 10%);
+        --neutral-2: hsl(235, 46%, 20%);
+        --neutral-3: hsl(235, 45%, 61%);
+        --neutral-4: hsl(236, 100%, 87%);
+      
+        --avatar:hsl(246, 80%, 60%);
+      
+        --orange :hsl(15, 100%, 70%);
+        --cyan :hsl(195, 74%, 62%);
+        --red :hsl(348, 100%, 68%);
+        --green :hsl(145, 58%, 55%);
+        --purple :hsl(264, 64%, 52%);
+        --yellow :hsl(43, 84%, 65%);
+      
+        /* templating for cards */
+        --bg: var(--neutral-2);
+        --time: 200ms;
+        --ease: ease-in-out;
+        --snap: cubic-bezier(0.72, -0.12, 0.24, 1.14);
+      }
+      
+      body {
+        font-family: 'Rubik', sans-serif;
+        background-color: var(--neutral-1);
+        color: white;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        padding: 16px;
+      }
+      
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: clamp(16px, 3vw, 32px);
+      }
+      
+      .container--timecards {
+        display: grid;
+        gap: clamp(16px, 3vw, 32px);
+      }
+      
+      .timecard {
+        display: grid;
+        grid-template-rows: 1fr 3fr;
+        overflow: hidden;
+      }
+
+      .card {
+        background-color: var(--bg);
+        border-radius: 16px;
+      }
+      
+      .card > div {
+        background-color: var(--bg);
+      }
+      
+      .card--avatar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1 1 10%;
+      }
+      
+      .card--avatar-top {
+        --bg: var(--avatar);
+        flex: 1 1 80%;
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      
+      .avatar {
+        width: clamp(64px, 4vw, 120px);
+        border: 3.2px solid white;
+        border-radius: 100vw;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        flex: 0 1 20%;
+      }
+      
+      h1 {
+        flex: 1 1 50%;
+        font-size: 19.2px;
+        font-weight: 300;
+        --txt: var(--neutral-2);
+      }
+      
+      h1 > span {
+        font-size: 12.8px;
+        color: var(--neutral-4);
+      }
+      
+      .card--lg {
+        border-radius: 16px;
+        padding: 16px;
+      }
+      
+      .timecard .card--lg {
+        --bg: var(--neutral-2);
+      }
+      
+      .card--sm {
+        padding: 16px 8px;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+      
+      .card--avatar .card--sm {
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+      
+      .card--avatar-bottom {
+        --bg: var(--neutral-2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .timecard .card--sm {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+      }
+      
+      .timecard--top {
+        position: relative;
+        /* overflow: hidden; */
+      }
+      
+      .icon {
+        position: absolute;
+        top: -12.8px;
+        right: 12.8px;
+      }
+      
+      .timecard--bottom {
+        align-self: end;
+        position: relative;
+        display: grid;
+        gap: clamp(8px, 2vw, 32px);
+      }
+      
+      .timecard--title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .timecard--amt {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 32px;
+      }
+      
+      .current {
+        font-size: 28.8px;
+        font-weight: 300;
+      }
+      
+      .previous {
+        font-size: 12.8px;
+        font-weight: 300;
+        color: var(--neutral-4);
+      }
+      
+      h2 {
+        font-size: 16px;
+        font-weight: 400;
+      }
+      
+      .timecard--title .btn {
+        flex: 0 1 0%;
+      }
+      
+      .timecard-work {
+        --bg: var(--orange);
+      }
+      .timecard-play {
+        --bg: var(--cyan);
+      }
+      .timecard-study {
+        --bg: var(--red);
+      }
+      .timecard-exercise {
+        --bg: var(--green);
+      }
+      .timecard-social {
+        --bg: var(--purple);
+      }
+      .timecard-selfcare {
+        --bg: var(--yellow);
+      }
+      
+      .btn {
+        font: inherit;
+        background: inherit;
+        border: none;
+        color: var(--neutral-3);
+        flex: 1 1 100%;
+        border-radius: 8px;
+        padding: 3.2px 12.8px;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        box-shadow:
+          0 0 0 -8px var(--bg),
+          0 0 0 -8px var(--avatar);
+        transition:
+          box-shadow var(--time) var(--snap),
+          color var(--time) var(--ease);
+      }
+      
+      .btn:focus {
+        outline: none;
+      }
+      
+      .btn:focus-visible {
+        box-shadow:
+          0 0 0 1.6px var(--bg),
+          0 0 0 6.4px var(--avatar);
+      }
+      
+      .btn:where([aria-selected="true"], :hover, :focus-visible) {
+        color: white;
+      }
+      
+      [role="tabpanel"][aria-hidden="true"] {
+        display: none;
+      }
+
+      @media screen and (min-width: 680px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    width: 100%;
+    max-width: 1200px;
+  }
+  .panel-container {
+    flex: 1 1 80%;
+  }
+
+  .container--timecards {
+    min-height: 100%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+      
+  .card--avatar-top {
+    flex-wrap: wrap;
+    align-items: start;
+    align-content: center;
+    padding: 16px;
+    gap: 32px;
+  }
+      
+        h1 {
+          flex: 1 1 100%;
+          font-size: 48px;
+        }
+      }
+      
+      @media screen and (min-width: 1024px) {
+        .container--timecards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
